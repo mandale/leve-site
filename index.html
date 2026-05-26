@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LEVÉ — The Mini Collection Vol. 01</title>
-<link rel="preload" as="image" href="/images/leve-mini-hero.png">
+<link rel="preload" as="image" href="images/leve-mini-hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -111,12 +111,11 @@ nav.scrolled{
 .hero-bg{
   position:absolute;
   inset:0;
-  background-image:url("/images/leve-mini-hero.png");
+  background-image:url("images/leve-mini-hero.png");
   background-size:cover;
   background-position:center;
   background-color:#C8C0B0;
 }
-/* Image placeholder label */
 .hero-bg,
 .set-image img,
 .image-moment img{
@@ -221,7 +220,8 @@ nav.scrolled{
   border-right:0.5px solid var(--ash3);
 }
 .set-text-top{width:100%;}
-.set-details{display:flex;flex-direction:column;gap:10px;align-items:center;margin-bottom:40px;}
+.set-details{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;margin-bottom:40px;}
+.set-detail-item{justify-content:center;}
 .sec-label{
   font-size:9px;letter-spacing:0.22em;
   color:var(--stone);text-transform:uppercase;
