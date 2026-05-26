@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEVÉ — The Mini Collection Vol. 01</title>
+<link rel="preload" as="image" href="images/hero-leve-mini.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ash:#F2F1EE;
+  --ash2:#ECEAE5;
+  --ash3:#D8D5CE;
+  --stone:#9A9590;
+  --taupe:#6A6560;
+  --noir:#141210;
+  --noir2:#1A1816;
+  --noir3:#242018;
+  --gold:#B8974A;
+  --gold2:#C9A85C;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-sans:'Raleway',sans-serif;
+}
+
+/* SANDSTONE TEXTURE */
+.sandstone{
+  position:relative;
+}
+.sandstone::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.055'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:200px 200px;
+  pointer-events:none;
+  z-index:0;
+  mix-blend-mode:multiply;
+}
+.sandstone > *{position:relative;z-index:1;}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--ash);
+  color:var(--noir);
+  font-family:var(--font-sans);
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 56px;
+  transition:background 0.5s,backdrop-filter 0.5s;
+}
+nav.scrolled{
+  background:rgba(242,241,238,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:0.5px solid rgba(20,18,16,0.08);
+}
+.nav-logo{
+  font-family:var(--font-serif);
+  font-size:18px;letter-spacing:0.32em;
+  color:var(--noir);font-weight:400;
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:40px;}
+.nav-links a{
+  font-size:9px;letter-spacing:0.2em;
+  color:var(--taupe);text-decoration:none;
+  text-transform:uppercase;
+  transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--noir);}
+.nav-cta{
+  font-size:9px;letter-spacing:0.18em;
+  color:var(--noir);
+  border:0.5px solid rgba(20,18,16,0.4);
+  padding:9px 22px;text-transform:uppercase;
+  text-decoration:none;
+  transition:all 0.3s;
+  font-family:var(--font-sans);
+}
+.nav-cta:hover{background:var(--noir);color:var(--ash);}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  height:100vh;min-height:700px;
+  overflow:hidden;
+  display:flex;align-items:center;
+  background:#C8C0B0;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:60% center;
+  background-color:#BDB5A6;
+  filter:brightness(0.5) saturate(0.7);
+  transition:transform 0.1s linear;
+}
+/* Image placeholder label */
+.hero-bg::after{
+  content:'[ IMAGE PLACEHOLDER — Hero: Product standing tall, warm sandstone background, soft directional light from left ]';
+  position:absolute;bottom:16px;right:16px;
+  font-size:8px;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.35);
+  font-family:var(--font-sans);
+  text-transform:uppercase;
+  max-width:280px;text-align:right;
+  line-height:1.6;
+}
+.hero-bg,
+.set-image img,
+.image-moment img{
+  transition:transform 1.8s ease-out;
+  will-change:transform;
+}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(110deg,rgba(14,12,10,0.55) 0%,rgba(14,12,10,0.15) 70%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 56px;
+  max-width:580px;
+}
+.hero-eyebrow{
+  font-size:9px;letter-spacing:0.28em;
+  color:var(--gold);text-transform:uppercase;
+  font-family:var(--font-sans);font-weight:300;
+  margin-bottom:20px;
+  opacity:0;animation:fadeUp 1s 0.4s forwards;
+}
+
+/* FROSTED PANEL */
+.hero-frosted{
+  background:rgba(20,18,16,0.42);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:0.5px solid rgba(245,240,232,0.1);
+  padding:32px 36px 36px;
+  margin-bottom:0;
+  opacity:0;animation:fadeUp 1s 0.65s forwards;
+  display:inline-block;
+}
+.hero-headline{
+  font-family:var(--font-serif);
+  font-size:clamp(52px,7.5vw,88px);
+  font-weight:300;color:#F5F0E8;
+  line-height:0.93;
+  margin-bottom:18px;
+  letter-spacing:-0.01em;
+}
+.hero-subline{
+  font-size:11px;letter-spacing:0.2em;
+  color:rgba(245,240,232,0.6);
+  text-transform:uppercase;font-weight:300;
+  margin-bottom:6px;
+}
+.hero-palette{
+  font-family:var(--font-serif);
+  font-size:15px;font-style:italic;
+  color:rgba(184,151,74,0.8);
+  letter-spacing:0.02em;
+  margin-bottom:28px;
+}
+.hero-btn{
+  display:inline-block;
+  font-size:9px;letter-spacing:0.22em;
+  color:#F5F0E8;
+  border:0.5px solid rgba(245,240,232,0.4);
+  padding:13px 30px;text-transform:uppercase;
+  text-decoration:none;font-family:var(--font-sans);
+  transition:all 0.4s;
+}
+.hero-btn:hover{
+  background:rgba(245,240,232,0.1);
+  border-color:rgba(245,240,232,0.75);
+}
+.hero-vol{
+  position:absolute;bottom:44px;right:56px;
+  z-index:2;text-align:right;
+  opacity:0;animation:fadeUp 1s 1.4s forwards;
+}
+.hero-vol p{
+  font-size:8px;letter-spacing:0.2em;
+  color:rgba(184,151,74,0.4);
+  text-transform:uppercase;
+  font-family:var(--font-sans);line-height:2;
+}
+
+.hero-btn:hover,
+.nav-cta:hover,
+.band-exp-cta:hover{
+  box-shadow:
+    0 0 24px rgba(184,151,74,0.18),
+    0 0 48px rgba(184,151,74,0.08);
+}
+
+/* ── THE SET ── */
+.the-set{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:580px;
+  background:var(--ash);
+}
+.set-text{
+  padding:80px 56px;
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  border-right:0.5px solid var(--ash3);
+}
+.set-text-top{}
+.sec-label{
+  font-size:9px;letter-spacing:0.22em;
+  color:var(--stone);text-transform:uppercase;
+  font-family:var(--font-sans);margin-bottom:24px;
+  display:block;
+}
+.set-headline{
+  font-family:var(--font-serif);
+  font-size:clamp(32px,4vw,52px);
+  font-weight:300;color:var(--noir);
+  line-height:1.08;margin-bottom:28px;
+}
+.set-body{
+  font-size:11px;color:var(--stone);
+  line-height:2.1;letter-spacing:0.04em;
+  max-width:340px;margin-bottom:32px;
+}
+.set-details{
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:40px;
+}
+.set-detail-item{
+  font-size:9px;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--taupe);
+  font-family:var(--font-sans);
+  display:flex;align-items:center;gap:12px;
+}
+.set-detail-item::before{
+  content:'';width:20px;height:0.5px;
+  background:var(--gold);flex-shrink:0;
+}
+.set-tagline{
+  font-family:var(--font-serif);
+  font-size:clamp(17px,2vw,22px);
+  font-weight:400;font-style:italic;
+  color:var(--noir2);
+  letter-spacing:0.03em;
+}
+.set-image{
+  position:relative;overflow:hidden;
+  background:var(--ash2);
+  min-height:500px;
+}
+.set-image-placeholder{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;
+  padding:20px;
+}
+.set-image-placeholder span{
+  font-size:8px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--stone);
+  font-family:var(--font-sans);line-height:1.6;
+  max-width:200px;
+}
+
+/* ── SYSTEM LINE ── */
+.system-line{
+  padding:72px 56px;
+  background:#EAE7E1;
+}
+.system-line-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;gap:48px;
+}
+.system-headline{
+  font-family:var(--font-serif);
+  font-size:clamp(26px,3.5vw,44px);
+  font-weight:300;font-style:italic;
+  color:var(--noir2);
+  line-height:1.15;max-width:560px;
+}
+.system-right{text-align:right;flex-shrink:0;}
+.system-vol{
+  font-size:9px;letter-spacing:0.22em;
+  color:var(--gold);text-transform:uppercase;
+  font-family:var(--font-sans);margin-bottom:8px;
+}
+.system-sub{
+  font-size:10px;color:var(--stone);
+  letter-spacing:0.08em;line-height:1.9;
+}
+
+/* ── PALETTE CENTERPIECE ── */
+.palette-section{
+  background:var(--ash);
+  padding:80px 0 0;
+}
+.palette-intro{
+  padding:0 56px 56px;
+  text-align:center;
+}
+.palette-intro-label{
+  font-size:9px;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--stone);
+  font-family:var(--font-sans);margin-bottom:16px;
+  display:block;
+}
+.palette-intro-headline{
+  font-family:var(--font-serif);
+  font-size:clamp(28px,4vw,48px);
+  font-weight:300;color:var(--noir);
+  margin-bottom:14px;
+}
+.palette-intro-sub{
+  font-family:var(--font-serif);
+  font-size:15px;font-style:italic;
+  color:var(--taupe);letter-spacing:0.03em;
+  max-width:520px;margin:0 auto;
+  line-height:1.7;
+}
+
+/* COLOR BANDS */
+.color-bands{width:100%;}
+.color-band{
+  position:relative;
+  height:88px;
+  cursor:pointer;
+  transition:height 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+  overflow:hidden;
+  border-top:0.5px solid rgba(255,255,255,0.08);
+}
+.color-band.active{height:320px;}
+.color-band.available{border-left:3px solid var(--gold);}
+.color-band.coming-soon{filter:saturate(0.45);}
+.color-band.coming-soon.active{filter:saturate(0.55);}
+
+.band-collapsed{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:88px;
+  display:flex;align-items:center;
+  padding:0 56px;
+  justify-content:space-between;
+  transition:opacity 0.3s;
+}
+.color-band.active .band-collapsed{opacity:0;pointer-events:none;}
+.band-collapsed-left{display:flex;align-items:center;gap:28px;}
+.band-swatch{
+  width:32px;height:32px;border-radius:50%;
+  flex-shrink:0;
+  box-shadow:0 2px 12px rgba(0,0,0,0.15);
+}
+.band-name-small{
+  font-family:var(--font-serif);
+  font-size:22px;font-weight:300;
+  letter-spacing:0.04em;
+}
+.band-identity-peek{
+  font-family:var(--font-serif);
+  font-size:12px;font-style:italic;
+  opacity:0.6;letter-spacing:0.02em;
+  max-width:360px;
+  white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;
+}
+.band-collapsed-right{
+  font-size:9px;letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  opacity:0.5;
+  transition:opacity 0.3s;
+}
+.color-band:hover .band-collapsed-right{opacity:1;}
+.band-status-tag{
+  font-size:8px;letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  padding:4px 10px;
+  border:0.5px solid currentColor;
+  opacity:0.5;margin-left:16px;
+}
+
+/* EXPANDED STATE */
+.band-expanded{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  padding:0 56px;
+  opacity:0;
+  transition:opacity 0.4s 0.2s;
+  pointer-events:none;
+}
+.color-band.active .band-expanded{
+  opacity:1;pointer-events:all;
+}
+.band-expanded-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  width:100%;
+  align-items:center;
+}
+.band-exp-left{}
+.band-exp-name{
+  font-family:var(--font-serif);
+  font-size:clamp(48px,7vw,80px);
+  font-weight:300;line-height:0.9;
+  letter-spacing:-0.01em;
+  margin-bottom:20px;
+}
+.band-exp-identity{
+  font-family:var(--font-serif);
+  font-size:clamp(14px,1.8vw,19px);
+  font-style:italic;font-weight:300;
+  line-height:1.6;letter-spacing:0.02em;
+  color:var(--noir2);
+  max-width:440px;
+  margin-bottom:28px;
+}
+.band-exp-right{
+  display:flex;flex-direction:column;
+  align-items:flex-end;gap:16px;
+}
+.band-exp-colorinfo{
+  text-align:right;
+}
+.band-exp-colorname-label{
+  font-size:8px;letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  opacity:0.5;margin-bottom:6px;
+  display:block;
+}
+.band-exp-colorname{
+  font-family:var(--font-serif);
+  font-size:13px;font-style:italic;
+  letter-spacing:0.06em;
+  opacity:0.7;
+}
+.band-exp-cta{
+  display:inline-block;
+  font-size:9px;letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  padding:12px 28px;
+  text-decoration:none;
+  transition:all 0.35s;
+  cursor:pointer;
+  border:none;
+  outline:none;
+}
+.band-exp-season{
+  font-size:8px;letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  opacity:0.45;margin-top:6px;
+}
+.band-close{
+  position:absolute;top:20px;right:56px;
+  font-size:8px;letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  opacity:0.4;cursor:pointer;
+  z-index:10;
+  background:none;border:none;
+  transition:opacity 0.3s;
+}
+.band-close:hover{opacity:0.9;}
+
+/* PALETTE FOOTER NOTE */
+.palette-footer-note{
+  padding:32px 56px 80px;
+  text-align:center;
+}
+.palette-footer-note p{
+  font-family:var(--font-serif);
+  font-size:14px;font-style:italic;
+  color:var(--stone);letter-spacing:0.03em;
+  line-height:1.8;
+}
+
+/* ── IMAGE MOMENT ── */
+.image-moment{
+  position:relative;
+  height:72vh;min-height:480px;
+  overflow:hidden;
+  background:var(--ash3);
+}
+.image-moment-placeholder{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,var(--ash3) 0%,var(--ash2) 100%);
+  display:flex;align-items:flex-end;
+  padding:24px;
+}
+.image-moment-placeholder span{
+  font-size:8px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--stone);
+  font-family:var(--font-sans);line-height:1.6;
+}
+.image-moment-text{
+  position:absolute;
+  bottom:48px;left:56px;z-index:2;
+}
+.image-moment-text p{
+  font-family:var(--font-serif);
+  font-size:clamp(20px,2.8vw,32px);
+  font-weight:300;font-style:italic;
+  color:rgba(245,240,232,0.82);
+  letter-spacing:0.04em;
+}
+
+/* ── PREORDER ── */
+.preorder{
+  background:var(--noir);
+  padding:100px 56px;
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:96px;
+  align-items:start;
+}
+.preorder-eyebrow{
+  font-size:9px;letter-spacing:0.26em;
+  color:rgba(184,151,74,0.45);
+  text-transform:uppercase;
+  font-family:var(--font-sans);
+  margin-bottom:20px;
+}
+.preorder-headline{
+  font-family:var(--font-serif);
+  font-size:clamp(36px,5vw,58px);
+  font-weight:300;color:#F5F0E8;
+  line-height:1.05;margin-bottom:18px;
+}
+.preorder-body{
+  font-size:11px;
+  color:rgba(245,240,232,0.3);
+  line-height:2.1;letter-spacing:0.04em;
+  margin-bottom:44px;max-width:400px;
+}
+.preorder-form{
+  display:flex;
+  border-bottom:0.5px solid rgba(245,240,232,0.15);
+  max-width:400px;margin-bottom:14px;
+}
+.preorder-input{
+  flex:1;background:transparent;border:none;
+  padding:14px 0;font-size:11px;
+  color:#F5F0E8;font-family:var(--font-sans);
+  outline:none;letter-spacing:0.08em;font-weight:300;
+}
+.preorder-input::placeholder{
+  color:rgba(245,240,232,0.2);letter-spacing:0.1em;
+}
+.preorder-btn{
+  background:transparent;border:none;
+  color:var(--gold);font-size:9px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  font-family:var(--font-sans);cursor:pointer;
+  padding:14px 0 14px 24px;
+  transition:color 0.3s;white-space:nowrap;
+}
+.preorder-btn:hover{color:var(--gold2);}
+.preorder-note{
+  font-size:9px;
+  color:rgba(245,240,232,0.18);
+  letter-spacing:0.06em;
+}
+.preorder-right{
+  padding-top:4px;
+  border-left:0.5px solid rgba(245,240,232,0.06);
+  padding-left:72px;
+  display:flex;flex-direction:column;gap:32px;
+}
+.drop-label{
+  font-size:8px;letter-spacing:0.24em;
+  color:rgba(184,151,74,0.35);
+  text-transform:uppercase;
+  font-family:var(--font-sans);margin-bottom:10px;
+}
+.drop-date{
+  font-family:var(--font-serif);
+  font-size:26px;font-weight:300;
+  color:var(--gold);line-height:1.2;
+}
+.drop-swatches{
+  display:flex;flex-direction:column;gap:8px;
+}
+.drop-swatch-row{
+  display:flex;align-items:center;gap:10px;
+}
+.drop-swatch-dot{
+  width:10px;height:10px;border-radius:50%;flex-shrink:0;
+}
+.drop-swatch-name{
+  font-size:8px;letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,0.25);
+  font-family:var(--font-sans);
+}
+.ecosystem-seed{
+  font-family:var(--font-serif);
+  font-size:13px;font-style:italic;
+  color:rgba(245,240,232,0.2);
+  line-height:1.9;letter-spacing:0.02em;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--noir2);
+  padding:28px 56px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:0.5px solid rgba(255,255,255,0.04);
+}
+.footer-logo{
+  font-family:var(--font-serif);
+  font-size:13px;letter-spacing:0.3em;
+  color:var(--gold);font-style:italic;
+}
+.footer-links{display:flex;gap:32px;}
+.footer-links a{
+  font-size:8px;letter-spacing:0.14em;
+  color:rgba(245,240,232,0.22);
+  text-decoration:none;text-transform:uppercase;
+  transition:color 0.3s;
+}
+.footer-links a:hover{color:rgba(245,240,232,0.55);}
+.footer-copy{
+  font-size:8px;letter-spacing:0.1em;
+  color:rgba(245,240,232,0.14);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 1s cubic-bezier(0.25,0.46,0.45,0.94),
+             transform 1s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.image-reveal{
+  opacity:0;
+  transform:scale(1.04) translateY(40px);
+
+  transition:
+    opacity 1.8s cubic-bezier(0.25,0.46,0.45,0.94),
+    transform 1.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.image-reveal.visible{
+  opacity:1;
+  transform:scale(1) translateY(0);
+}
+.reveal-d1{transition-delay:0.15s;}
+.reveal-d2{transition-delay:0.3s;}
+
+/* ── RESPONSIVE ── */
+.set-image:hover img,
+.image-moment:hover img{
+  transform:scale(1.03);
+}
+@media(max-width:900px){
+
+.hero-bg{
+  background-position:center center;
+  transform:scale(1.12);
+}
+
+.hero-headline{
+  line-height:0.95;
+}
+
+.hero-frosted{
+  padding:24px;
+  width:100%;
+} 
+  nav{padding:18px 24px;}
+  .nav-links{display:none;}
+  .hero-content,
+  .set-text,
+  .system-line,
+  .palette-intro,
+  .palette-footer-note,
+  .image-moment-text,
+  .preorder{padding-left:24px;padding-right:24px;}
+  .band-collapsed,.band-expanded{padding-left:24px;padding-right:24px;}
+  .the-set{grid-template-columns:1fr;}
+  .set-text{border-right:none;border-bottom:0.5px solid var(--ash3);}
+  .set-image{min-height:360px;}
+  .system-line-inner{flex-direction:column;gap:20px;}
+  .system-right{text-align:left;}
+  .band-expanded-inner{grid-template-columns:1fr;}
+  .band-exp-right{align-items:flex-start;}
+  .band-exp-colorinfo{text-align:left;}
+  .band-exp-name{font-size:clamp(36px,10vw,56px);}
+  .color-band.active{height:420px;}
+  .preorder{grid-template-columns:1fr;}
+  .preorder-right{display:none;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}
+  .hero-vol{right:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     NAV
+════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">LEVÉ</a>
+  <div class="nav-links">
+    <a href="#the-set">The Set</a>
+    <a href="#palette">The Collection</a>
+    <a href="#preorder">Reserve</a>
+  </div>
+  <a href="#preorder" class="nav-cta">Reserve Access</a>
+</nav>
+
+<!-- ════════════════════════════════════
+     01 — HERO
+════════════════════════════════════ -->
+<section class="hero sandstone">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Mini Collection · Vol. 01</p>
+    <div class="hero-frosted">
+      <h1 class="hero-headline">The<br>creator<br>set.</h1>
+      <p class="hero-subline">Create freely. Move intentionally.</p>
+      <p class="hero-palette">A palette for every desire.</p>
+      <a href="#preorder" class="hero-btn">Reserve Early Access</a>
+    </div>
+  </div>
+  <div class="hero-vol">
+    <p>The Levé System</p>
+    <p>Mini Collection · Vol. 01</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     02 — THE SET
+════════════════════════════════════ -->
+<section class="the-set" id="the-set">
+  <div class="set-text reveal">
+    <div class="set-text-top">
+      <span class="sec-label">The Set</span>
+      <h2 class="set-headline">One set,<br>refined.</h2>
+      <p class="set-body">The Mini Collection arrives as a complete set — the carry case and compact tripod, designed together, refined together. Everything your creative process demands in one considered silhouette.</p>
+      <div class="set-details">
+        <span class="set-detail-item">Water-resistant PU canvas</span>
+        <span class="set-detail-item">Gold embossed monogram</span>
+        <span class="set-detail-item">Invisible snap closure</span>
+        <span class="set-detail-item">Compact tripod included</span>
+        <span class="set-detail-item">Precision stitching</span>
+      </div>
+    </div>
+    <p class="set-tagline">Precision you can feel.</p>
+  </div>
+  <div class="set-image image-reveal reveal-d1">
+    <div class="set-image-placeholder">
+      <span>[ Image placeholder — material detail: gold monogram, texture close-up, precision stitching ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     03 — SYSTEM LINE
+     Sandstone texture — italic moment
+════════════════════════════════════ -->
+<div class="system-line sandstone reveal">
+  <div class="system-line-inner">
+    <h2 class="system-headline">Built for the ones<br>who never stop moving.</h2>
+    <div class="system-right">
+      <p class="system-vol">The Levé System</p>
+      <p class="system-sub">Mini Collection Vol. 01<br>Case + Tripod Set</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     04 — THE PALETTE — CENTERPIECE
+════════════════════════════════════ -->
+<section class="palette-section" id="palette">
+  <div class="palette-intro reveal">
+    <span class="palette-intro-label">The Mini Collection</span>
+    <h2 class="palette-intro-headline">The Collection</h2>
+    <p class="palette-intro-sub">A palette for every desire. Find the color that's already yours.</p>
+  </div>
+
+  <div class="color-bands" id="colorBands">
+
+    <!-- BARE — Cream — Available -->
+    <div class="color-band available" data-index="0"
+         style="background:#E8E2D4;color:#2A2420;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#E8E2D4;border:1px solid #C8C0B0;"></div>
+          <span class="band-name-small">Bare</span>
+          <span class="band-identity-peek">The canvas before the first mark...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:#B8974A;border-color:#B8974A;">Available</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,0)">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#2A2420;">Bare</h3>
+            <p class="band-exp-identity" style="color:#4A3E34;">"The canvas before the first mark. Yours is the quietest confidence in the room."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:#2A2420;color:#F5F0E8;border:none;">
+              Reserve Bare →
+            </button>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:#6A5E54;">Colorway</span>
+              <span class="band-exp-colorname" style="color:#6A5E54;">Cream</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORBIDDEN — Matte Black — Available -->
+    <div class="color-band available" data-index="1"
+         style="background:#1A1816;color:#F5F0E8;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#1A1816;border:1px solid #3A3430;"></div>
+          <span class="band-name-small">Forbidden</span>
+          <span class="band-identity-peek">Some palettes don't ask permission...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:#B8974A;border-color:#B8974A;">Available</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,1)" style="color:#F5F0E8;">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#F5F0E8;">Forbidden</h3>
+            <p class="band-exp-identity" style="color:rgba(245,240,232,0.7);">"Some palettes don't ask permission. Neither do you."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:transparent;color:var(--gold);border:0.5px solid var(--gold);">
+              Reserve Forbidden →
+            </button>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(245,240,232,0.35);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(245,240,232,0.4);">Matte Black</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEAT — Burnt Orange — Available -->
+    <div class="color-band available" data-index="2"
+         style="background:#C25A2A;color:#F5F0E8;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#C25A2A;border:1px solid #A04820;"></div>
+          <span class="band-name-small">Heat</span>
+          <span class="band-identity-peek">The color that enters before you do...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:#F5F0E8;border-color:rgba(245,240,232,0.4);">Available</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,2)" style="color:#F5F0E8;">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#F5F0E8;">Heat</h3>
+            <p class="band-exp-identity" style="color:rgba(245,240,232,0.75);">"The color that enters before you do."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:#F5F0E8;color:#C25A2A;border:none;">
+              Reserve Heat →
+            </button>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(245,240,232,0.35);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(245,240,232,0.4);">Burnt Orange</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECOND SKIN — Chocolate — Coming Soon -->
+    <div class="color-band coming-soon" data-index="3"
+         style="background:#6B4A32;color:#F5F0E8;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#6B4A32;border:1px solid #4A3020;"></div>
+          <span class="band-name-small">Second Skin</span>
+          <span class="band-identity-peek">Worn-in. Lived-in. The palette that already knows you...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:rgba(245,240,232,0.4);border-color:rgba(245,240,232,0.2);">Arriving Autumn 2026</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,3)" style="color:#F5F0E8;">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#F5F0E8;">Second Skin</h3>
+            <p class="band-exp-identity" style="color:rgba(245,240,232,0.7);">"Worn-in. Lived-in. The palette that already knows you."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:transparent;color:rgba(245,240,232,0.7);border:0.5px solid rgba(245,240,232,0.3);">
+              Join the Waitlist →
+            </button>
+            <p class="band-exp-season" style="color:rgba(245,240,232,0.4);">Arriving Autumn 2026</p>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(245,240,232,0.3);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(245,240,232,0.35);">Chocolate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUN LICKED — Khaki — Coming Soon -->
+    <div class="color-band coming-soon" data-index="4"
+         style="background:#A89070;color:#2A2420;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#A89070;border:1px solid #887050;"></div>
+          <span class="band-name-small">Sun Licked</span>
+          <span class="band-identity-peek">Every great story starts somewhere warm...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:rgba(42,36,32,0.4);border-color:rgba(42,36,32,0.2);">Arriving Autumn 2026</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,4)">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#2A2420;">Sun Licked</h3>
+            <p class="band-exp-identity" style="color:rgba(42,36,32,0.75);">"Every great story starts somewhere warm."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:#2A2420;color:#F5F0E8;border:none;">
+              Join the Waitlist →
+            </button>
+            <p class="band-exp-season" style="color:rgba(42,36,32,0.45);">Arriving Autumn 2026</p>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(42,36,32,0.35);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(42,36,32,0.4);">Khaki</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SWEET NOTHING — Pastel Pink — Coming Soon -->
+    <div class="color-band coming-soon" data-index="5"
+         style="background:#DDB8B0;color:#2A1C18;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#DDB8B0;border:1px solid #C09888;"></div>
+          <span class="band-name-small">Sweet Nothing</span>
+          <span class="band-identity-peek">The boldest thing you can be is gentle...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:rgba(42,28,24,0.4);border-color:rgba(42,28,24,0.2);">Arriving Autumn 2026</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,5)">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#2A1C18;">Sweet Nothing</h3>
+            <p class="band-exp-identity" style="color:rgba(42,28,24,0.7);">"The boldest thing you can be is gentle."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:#2A1C18;color:#F5F0E8;border:none;">
+              Join the Waitlist →
+            </button>
+            <p class="band-exp-season" style="color:rgba(42,28,24,0.4);">Arriving Autumn 2026</p>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(42,28,24,0.3);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(42,28,24,0.35);">Pastel Pink</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMALFI — Pastel Blue — Coming Soon -->
+    <div class="color-band coming-soon" data-index="6"
+         style="background:#7A9AB8;color:#F5F0E8;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#7A9AB8;border:1px solid #5A7A98;"></div>
+          <span class="band-name-small">Amalfi</span>
+          <span class="band-identity-peek">Blue like the hour before you have to leave...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:rgba(245,240,232,0.4);border-color:rgba(245,240,232,0.2);">Arriving Autumn 2026</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,6)" style="color:#F5F0E8;">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#F5F0E8;">Amalfi</h3>
+            <p class="band-exp-identity" style="color:rgba(245,240,232,0.75);">"Blue like the hour before you have to leave."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:rgba(245,240,232,0.12);color:#F5F0E8;border:0.5px solid rgba(245,240,232,0.3);">
+              Join the Waitlist →
+            </button>
+            <p class="band-exp-season" style="color:rgba(245,240,232,0.35);">Arriving Autumn 2026</p>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(245,240,232,0.3);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(245,240,232,0.35);">Pastel Blue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLEU NOIR — Royal Blue — Coming Soon -->
+    <div class="color-band coming-soon" data-index="7"
+         style="background:#1A2A4A;color:#F5F0E8;">
+      <div class="band-collapsed">
+        <div class="band-collapsed-left">
+          <div class="band-swatch" style="background:#1A2A4A;border:1px solid #2A3A5A;"></div>
+          <span class="band-name-small">Bleu Noir</span>
+          <span class="band-identity-peek">Deep enough to disappear into. Rare enough to be remembered...</span>
+        </div>
+        <div class="band-collapsed-right">
+          <span>Explore</span>
+          <span class="band-status-tag" style="color:rgba(245,240,232,0.4);border-color:rgba(245,240,232,0.2);">Arriving Autumn 2026</span>
+        </div>
+      </div>
+      <button class="band-close" onclick="closeBand(event,7)" style="color:#F5F0E8;">Close ✕</button>
+      <div class="band-expanded">
+        <div class="band-expanded-inner">
+          <div class="band-exp-left">
+            <h3 class="band-exp-name" style="color:#F5F0E8;">Bleu Noir</h3>
+            <p class="band-exp-identity" style="color:rgba(245,240,232,0.75);">"Deep enough to disappear into. Rare enough to be remembered."</p>
+            <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
+              style="background:transparent;color:var(--gold);border:0.5px solid var(--gold);">
+              Join the Waitlist →
+            </button>
+            <p class="band-exp-season" style="color:rgba(245,240,232,0.35);">Arriving Autumn 2026</p>
+          </div>
+          <div class="band-exp-right">
+            <div class="band-exp-colorinfo">
+              <span class="band-exp-colorname-label" style="color:rgba(245,240,232,0.3);">Colorway</span>
+              <span class="band-exp-colorname" style="color:rgba(245,240,232,0.35);">Royal Blue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /color-bands -->
+
+  <div class="palette-footer-note sandstone reveal">
+    <p>A palette this personal takes time.<br>Reserve the color that's already chosen you.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     05 — IMAGE MOMENT
+════════════════════════════════════ -->
+<section class="image-moment image-reveal">
+  <div class="image-moment-placeholder">
+    <span>[ Image placeholder — full bleed lifestyle: creator in motion, minimal humans, product as object, warm ambient light ]</span>
+  </div>
+  <div class="image-moment-text">
+    <p>"Designed for creative movement."</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     06 — PREORDER
+════════════════════════════════════ -->
+<section class="preorder" id="preorder">
+  <div class="preorder-left reveal">
+    <p class="preorder-eyebrow">Next Drop — Autumn 2026</p>
+    <h2 class="preorder-headline">Reserve your<br>place before<br>the drop opens.</h2>
+    <p class="preorder-body">Limited production. No restocks. Once a colorway closes, it moves to archive. Reserve early access now and be first when your color releases.</p>
+    <div class="preorder-form">
+      <input class="preorder-input" type="email" placeholder="Your email address" id="emailInput">
+      <button class="preorder-btn" onclick="handleReserve()">Reserve Access →</button>
+    </div>
+    <p class="preorder-note" id="reserveNote">Reserved customers receive first access. No payment required.</p>
+  </div>
+  <div class="preorder-right reveal reveal-d1">
+    <div>
+      <p class="drop-label">Next Drop</p>
+      <p class="drop-date">Autumn<br>2026</p>
+    </div>
+    <div class="drop-swatches">
+      <div class="drop-swatch-row">
+        <div class="drop-swatch-dot" style="background:#6B4A32;"></div>
+        <span class="drop-swatch-name">Second Skin</span>
+      </div>
+      <div class="drop-swatch-row">
+        <div class="drop-swatch-dot" style="background:#A89070;"></div>
+        <span class="drop-swatch-name">Sun Licked</span>
+      </div>
+      <div class="drop-swatch-row">
+        <div class="drop-swatch-dot" style="background:#DDB8B0;"></div>
+        <span class="drop-swatch-name">Sweet Nothing</span>
+      </div>
+      <div class="drop-swatch-row">
+        <div class="drop-swatch-dot" style="background:#7A9AB8;"></div>
+        <span class="drop-swatch-name">Amalfi</span>
+      </div>
+      <div class="drop-swatch-row">
+        <div class="drop-swatch-dot" style="background:#1A2A4A;"></div>
+        <span class="drop-swatch-name">Bleu Noir</span>
+      </div>
+    </div>
+    <p class="ecosystem-seed">Built to expand.<br>Your world, one system.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Levé</div>
+  <div class="footer-links">
+    <a href="#the-set">The Set</a>
+    <a href="#palette">Collection</a>
+    <a href="#preorder">Reserve</a>
+    <a href="mailto:hello@leve.co">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 LEVÉ · Mini Collection Vol. 01</p>
+</footer>
+
+<script>
+
+/* NAV + CINEMATIC PARALLAX */
+const nav = document.getElementById('nav');
+const heroBg = document.querySelector('.hero-bg');
+
+window.addEventListener('scroll', () => {
+
+  const scrollY = window.scrollY;
+
+  nav.classList.toggle('scrolled', scrollY > 50);
+
+  if(heroBg){
+    heroBg.style.transform =
+      `scale(1.08) translateY(${scrollY * 0.18}px)`;
+  }
+
+});
+
+
+/* REVEAL ON SCROLL */
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+
+  });
+
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll('.reveal, .image-reveal')
+  .forEach(el => observer.observe(el));
+
+
+/* COLOR BAND EXPAND */
+const bands = document.querySelectorAll('.color-band');
+
+bands.forEach((band, i) => {
+
+  band.addEventListener('click', function(e) {
+
+    if(
+      e.target.classList.contains('band-close') ||
+      e.target.classList.contains('band-exp-cta')
+    ) return;
+
+    const isActive = this.classList.contains('active');
+
+    bands.forEach(b => b.classList.remove('active'));
+
+    if(!isActive){
+      this.classList.add('active');
+    }
+
+  });
+
+});
+
+function closeBand(e, index) {
+
+  e.stopPropagation();
+
+  bands[index].classList.remove('active');
+
+}
+
+
+/* RESERVE FORM */
+function handleReserve() {
+
+  const email = document.getElementById('emailInput').value;
+
+  const note = document.getElementById('reserveNote');
+
+  if(!email || !email.includes('@')) {
+
+    note.style.color = '#C25A2A';
+
+    note.textContent =
+      'Please enter a valid email address.';
+
+    return;
+  }
+
+  window.open('https://tally.so', '_blank');
+
+  note.style.color = 'rgba(184,151,74,0.7)';
+
+  note.textContent =
+    'Redirecting to your reservation — your access is being secured.';
+
+}
+
+</script>
+</body>
+</html>
