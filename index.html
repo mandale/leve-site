@@ -207,7 +207,7 @@ nav.scrolled{
 /* ── THE SET ── */
 .the-set{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr;
   min-height:580px;
   background:var(--ash);
 }
@@ -217,9 +217,9 @@ nav.scrolled{
   justify-content:center;
   align-items:center;
   text-align:center;
-  border-right:0.5px solid var(--ash3);
+  border-right:none;
 }
-.set-text-top{width:100%;}
+.set-text-top{width:100%;max-width:700px;}
 .set-details{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;margin-bottom:40px;}
 .set-detail-item{justify-content:center;}
 .sec-label{
@@ -237,7 +237,8 @@ nav.scrolled{
 .set-body{
   font-size:11px;color:var(--stone);
   line-height:2.1;letter-spacing:0.04em;
-  max-width:340px;margin-bottom:32px;
+  max-width:340px;
+  margin:0 auto 32px;
 }
 .set-detail-item{
   font-size:9px;letter-spacing:0.16em;
@@ -257,9 +258,7 @@ nav.scrolled{
   letter-spacing:0.03em;
 }
 .set-image{
-  position:relative;overflow:hidden;
-  background:var(--ash2);
-  min-height:500px;
+  display:none;
 }
 
 /* ── SYSTEM LINE ── */
