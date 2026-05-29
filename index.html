@@ -24,7 +24,6 @@
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-sans:'Raleway',sans-serif;
 }
-
 /* SANDSTONE TEXTURE */
 .sandstone{
   position:relative;
@@ -223,25 +222,25 @@ nav.scrolled{
 .set-details{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;margin-bottom:40px;}
 .set-detail-item{justify-content:center;}
 .sec-label{
-  font-size:9px;letter-spacing:0.22em;
+  font-size:15px;letter-spacing:0.22em;
   color:var(--stone);text-transform:uppercase;
   font-family:var(--font-sans);margin-bottom:24px;
   display:block;
 }
 .set-headline{
   font-family:var(--font-serif);
-  font-size:clamp(32px,4vw,52px);
+  font-size:clamp(55px,4vw,65px);
   font-weight:300;color:var(--noir);
   line-height:1.08;margin-bottom:28px;
 }
 .set-body{
-  font-size:11px;color:var(--stone);
+  font-size:15px;color:var(--stone);
   line-height:2.1;letter-spacing:0.04em;
   max-width:340px;
   margin:0 auto 32px;
 }
 .set-detail-item{
-  font-size:9px;letter-spacing:0.16em;
+  font-size:12px;letter-spacing:0.16em;
   text-transform:uppercase;color:var(--taupe);
   font-family:var(--font-sans);
   display:flex;align-items:center;gap:12px;
@@ -252,7 +251,7 @@ nav.scrolled{
 }
 .set-tagline{
   font-family:var(--font-serif);
-  font-size:clamp(17px,2vw,22px);
+  font-size:clamp(25px,4vw,35px);
   font-weight:400;font-style:italic;
   color:var(--noir2);
   letter-spacing:0.03em;
@@ -317,7 +316,18 @@ nav.scrolled{
   max-width:520px;margin:0 auto;
   line-height:1.7;
 }
+.palette-intro-sub{
+  opacity:0.88;
+  transform:translateY(0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
 
+.palette-intro:hover .palette-intro-sub{
+  opacity:1;
+  transform:translateY(-2px);
+}
 /* COLOR BANDS */
 .color-bands{width:100%;}
 .color-band{
@@ -450,7 +460,7 @@ nav.scrolled{
   outline:none;
 }
 .band-exp-season{
-  font-size:8px;letter-spacing:0.14em;
+  font-sizka e:8px;letter-spacing:0.14em;
   text-transform:uppercase;
   font-family:var(--font-sans);
   opacity:0.45;margin-top:6px;
@@ -508,7 +518,137 @@ nav.scrolled{
   color:rgba(245,240,232,0.82);
   letter-spacing:0.04em;
 }
+<!-- ════════════════════════════════════
+     05 — IDENTITY LINEUP
+════════════════════════════════════ -->
+<section class="identity-lineup sandstone">
 
+  <div class="identity-intro reveal">
+    <span class="identity-label">The Identities</span>
+    <h2 class="identity-headline">
+      Not colors.<br>
+      Versions of you.
+    </h2>
+  </div>
+
+  <div class="identity-grid">
+
+    <!-- BARE -->
+    <div class="identity-card reveal">
+      <div class="identity-image-wrap">
+        <img src="images/bare-case.png" alt="Bare LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Bare</h3>
+        <p>
+          Quiet confidence.<br>
+          Nothing forced.
+        </p>
+      </div>
+    </div>
+
+    <!-- FORBIDDEN -->
+    <div class="identity-card reveal reveal-d1 dark">
+      <div class="identity-image-wrap">
+        <img src="images/forbidden-case.png" alt="Forbidden LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Forbidden</h3>
+        <p>
+          Presence without permission.
+        </p>
+      </div>
+    </div>
+
+    <!-- HEAT -->
+    <div class="identity-card reveal reveal-d2">
+      <div class="identity-image-wrap">
+        <img src="images/heat-case.png" alt="Heat LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Heat</h3>
+        <p>
+          The energy arrives first.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECOND SKIN -->
+    <div class="identity-card reveal">
+      <div class="identity-image-wrap">
+        <img src="images/secondskin-case.png" alt="Second Skin LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Second Skin</h3>
+        <p>
+          Familiar from the first touch.
+        </p>
+      </div>
+    </div>
+
+    <!-- SUN LICKED -->
+    <div class="identity-card reveal reveal-d1">
+      <div class="identity-image-wrap">
+        <img src="images/sunlicked-case.png" alt="Sun Licked LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Sun Licked</h3>
+        <p>
+          Warmth that lingers.
+        </p>
+      </div>
+    </div>
+
+    <!-- SWEET NOTHING -->
+    <div class="identity-card reveal reveal-d2">
+      <div class="identity-image-wrap">
+        <img src="images/sweetnothing-case.png" alt="Sweet Nothing LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Sweet Nothing</h3>
+        <p>
+          Softness with intention.
+        </p>
+      </div>
+    </div>
+
+    <!-- AMALFI -->
+    <div class="identity-card reveal">
+      <div class="identity-image-wrap">
+        <img src="images/amalfi-case.png" alt="Amalfi LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Amalfi</h3>
+        <p>
+          Blue before goodbye.
+        </p>
+      </div>
+    </div>
+
+    <!-- BLEU NOIR -->
+    <div class="identity-card reveal reveal-d1 dark">
+      <div class="identity-image-wrap">
+        <img src="images/bleunoir-case.png" alt="Bleu Noir LEVÉ Case">
+      </div>
+
+      <div class="identity-meta">
+        <h3>Bleu Noir</h3>
+        <p>
+          Rare enough to remember.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 /* ── PREORDER ── */
 .preorder{
   background:var(--noir);
@@ -655,7 +795,161 @@ footer{
 }
 .reveal-d1{transition-delay:0.15s;}
 .reveal-d2{transition-delay:0.3s;}
+/* ── CINEMATIC SHOWCASE ── */
 
+.cinematic-showcase{
+  position:relative;
+  min-height:90vh;
+  background:#D8D0C2;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+
+.cinematic-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 40%),
+    linear-gradient(to bottom, rgba(20,18,16,0.05), rgba(20,18,16,0.25));
+  z-index:1;
+}
+
+.showcase-track{
+  position:relative;
+  z-index:2;
+  width:100%;
+  display:flex;
+  gap:28px;
+  padding:0 56px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.showcase-track::-webkit-scrollbar{
+  display:none;
+}
+
+.showcase-panel{
+  position:relative;
+  flex:0 0 38%;
+  min-height:560px;
+  border-radius:28px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:40px;
+  transition:
+    transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),
+    box-shadow 0.8s ease;
+}
+
+.showcase-panel:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.18),
+    0 0 40px rgba(184,151,74,0.12);
+}
+
+.showcase-panel::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top,
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.05));
+}
+
+.showcase-glow{
+  position:absolute;
+  inset:auto -20% -30% auto;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.25;
+}
+
+.showcase-content{
+  position:relative;
+  z-index:2;
+}
+
+.showcase-label{
+  display:block;
+  font-size:9px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  font-family:var(--font-sans);
+  opacity:0.7;
+}
+
+.showcase-content h3{
+  font-family:var(--font-serif);
+  font-size:clamp(34px,4vw,58px);
+  font-weight:300;
+  line-height:0.98;
+  margin-bottom:16px;
+}
+
+.showcase-content p{
+  font-size:12px;
+  letter-spacing:0.06em;
+  line-height:1.9;
+  max-width:280px;
+  opacity:0.72;
+}
+
+/* INDIVIDUAL PALETTES */
+
+.showcase-panel.cream{
+  background:
+    linear-gradient(145deg,#E9E1D2,#D9CDBD);
+  color:#2A2420;
+}
+
+.showcase-panel.cream .showcase-glow{
+  background:#FFF4D8;
+}
+
+.showcase-panel.noir{
+  background:
+    linear-gradient(145deg,#111111,#2A2A2A);
+  color:#F5F0E8;
+}
+
+.showcase-panel.noir .showcase-glow{
+  background:#B8974A;
+}
+
+.showcase-panel.heat{
+  background:
+    linear-gradient(145deg,#B34B22,#E17A42);
+  color:#F5F0E8;
+}
+
+.showcase-panel.heat .showcase-glow{
+  background:#FFD1A6;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .showcase-track{
+    padding:0 24px;
+    gap:18px;
+  }
+
+  .showcase-panel{
+    flex:0 0 82%;
+    min-height:480px;
+    padding:28px;
+  }
+
+}
 /* ── RESPONSIVE ── */
 .set-image:hover img,
 .image-moment:hover img{
@@ -677,7 +971,7 @@ footer{
   width:100%;
 } 
   nav{padding:18px 24px;}
-  .nav-links{display:none;}
+  .nav-links{display:none;}           bn      fv x
   .hero-content,
   .set-text,
   .system-line,
@@ -777,12 +1071,10 @@ NAV
 <!-- ════════════════════════════════════
      04 — THE PALETTE — CENTERPIECE
 ════════════════════════════════════ -->
-<section class="palette-section" id="palette">
-  <div class="palette-intro reveal">
-    <span class="palette-intro-label">The Mini Collection</span>
-    <h2 class="palette-intro-headline">The Collection</h2>
-    <p class="palette-intro-sub">A palette for every desire. Find the color that's already yours.</p>
-  </div>
+<p class="palette-intro-sub">
+  Every palette carries a presence. 
+  A version of you already waiting to be recognized.
+</p>
 
   <div class="color-bands" id="colorBands">
 
@@ -808,7 +1100,7 @@ NAV
             <p class="band-exp-identity" style="color:#4A3E34;">"The canvas before the first mark. Yours is the quietest confidence in the room."</p>
             <button class="band-exp-cta" onclick="window.open('https://tally.so','_blank')"
               style="background:#2A2420;color:#F5F0E8;border:none;">
-              Reserve Bare →
+              Reserve Bare→
             </button>
           </div>
           <div class="band-exp-right">
@@ -954,7 +1246,7 @@ NAV
             <p class="band-exp-season" style="color:rgba(42,36,32,0.45);">Arriving Autumn 2026</p>
           </div>
           <div class="band-exp-right">
-            <div class="band-exp-colorinfo">
+            <div class="band-exp-colorinfo"
               <span class="band-exp-colorname-label" style="color:rgba(42,36,32,0.35);">Colorway</span>
               <span class="band-exp-colorname" style="color:rgba(42,36,32,0.4);">Khaki</span>
             </div>
@@ -1074,22 +1366,12 @@ NAV
   </div><!-- /color-bands -->
 
   <div class="palette-footer-note sandstone reveal">
-    <p>A palette this personal takes time.<br>Reserve the color that's already chosen you.</p>
-  </div>
+    <p>
+  A palette this personal takes time.<br>
+  Reserve the identity that already feels like yours.
+</p>
+</div>
 </section>
-
-<!-- ════════════════════════════════════
-     05 — IMAGE MOMENT
-════════════════════════════════════ -->
-<section class="image-moment image-reveal">
-  <div class="image-moment-placeholder">
-    <span>[ Image placeholder — full bleed lifestyle: creator in motion, minimal humans, product as object, warm ambient light ]</span>
-  </div>
-  <div class="image-moment-text">
-    <p>"Designed for creative movement."</p>
-  </div>
-</section>
-
 <!-- ════════════════════════════════════
      06 — PREORDER
 ════════════════════════════════════ -->
